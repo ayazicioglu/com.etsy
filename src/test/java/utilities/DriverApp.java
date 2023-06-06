@@ -30,9 +30,9 @@ public class DriverApp {
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, ANDROIDVERSION);
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM);
             caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, OTOMASYON_ISMI);
-           // caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\ACER\\IdeaProjects\\com.etsy\\src\\test\\java\\apps\\Etsy_ Custom & Creative Goods_6.29.0_Apkpure.apk");
+           //caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\ACER\\IdeaProjects\\com.etsy\\src\\test\\java\\apps\\Etsy_ Custom & Creative Goods_6.29.0_Apkpure.apk");
           //  caps.setCapability(MobileCapabilityType.FULL_RESET, true);
-          // caps.setCapability(MobileCapabilityType.NO_RESET,false);
+           caps.setCapability(MobileCapabilityType.NO_RESET,false);
            // caps.setCapability("appPackage", "com.etsy.android");
            // caps.setCapability("appActivity", "com.etsy.android.ui.user.auth.SignInActivity");
            // caps.setCapability("fullReset", true);

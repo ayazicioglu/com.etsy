@@ -38,6 +38,12 @@ public class EtsyPageMobile {
     @FindBy(xpath = "(//*[@class='android.view.ViewGroup'])[3]")
     public WebElement anOption;
 
+    @FindBy(xpath = "(//*[@resource-id='join_neu_first_name_field'])[1]")
+    public WebElement firstNameBox;
+
+    @FindBy(xpath = "(//*[@resource-id='join_neu_password_field'])[1]")
+    public WebElement passwordBox;
+
     @FindBy(xpath = "(//*[@class='android.view.ViewGroup'])[2]")
     public WebElement anotherOption;
 
@@ -52,6 +58,9 @@ public class EtsyPageMobile {
 
     @FindBy(xpath = "(//*[@text='Continue'])")
     public WebElement continueButton;
+
+    @FindBy(xpath = "(//*[@text='Continue to payment'])")
+    public WebElement continuePaymentButton;
 
     @FindBy(xpath = "(//*[@text='Register'])")
     public WebElement registerButton;
