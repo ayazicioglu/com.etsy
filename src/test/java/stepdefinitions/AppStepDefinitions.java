@@ -14,9 +14,9 @@ import java.net.MalformedURLException;
 import java.util.Map;
 
 public class AppStepDefinitions {
-    EtsyPageMobile etsyPageMobile=new EtsyPageMobile();
-    Faker faker=new Faker();
-    private static AndroidDriver<AndroidElement> appiumDriver=DriverApp.getAndroidDriver();
+    EtsyPageMobile etsyPageMobile = new EtsyPageMobile();
+    Faker faker = new Faker();
+    private static AndroidDriver<AndroidElement> appiumDriver = DriverApp.getAndroidDriver();
 
     @Given("etsy app opens on phone")
     public void etsyAppOpensOnPhone() throws MalformedURLException {
@@ -26,7 +26,7 @@ public class AppStepDefinitions {
 
     @Then("Choose Continue as guest option")
     public void chooseContinueAsGuestOption() {
-      //  etsyPageMobile.asAGuestOption.click();
+        etsyPageMobile.asAGuestOption.click();
     }
 
     @Then("Choose Maybe Later option")
@@ -36,12 +36,12 @@ public class AppStepDefinitions {
 
     @Then("Click the searchbox and type {string} then search")
     public void clickTheSearchboxAndTypeThenSearch(String aranacakUrun) {
-        EtsyPageMobile.koordinataTikla(305,172);
-        EtsyPageMobile.koordinataTikla(305,172);
-        EtsyPageMobile.bekle(2);
+        EtsyPageMobile.koordinataTikla(305, 172);
+        EtsyPageMobile.koordinataTikla(305, 172);
+        EtsyPageMobile.bekle(4);
         appiumDriver.getKeyboard().sendKeys(aranacakUrun);
         EtsyPageMobile.bekle(2);
-        EtsyPageMobile.koordinataTikla(990,1999);
+        EtsyPageMobile.koordinataTikla(990, 1999);
     }
 
     @And("Choose the first product from the results")
@@ -55,18 +55,18 @@ public class AppStepDefinitions {
     public void selectsSizeAndColorFromTheEditItemSection() {
         etsyPageMobile.selectOptionDDM.click();
         etsyPageMobile.anOption.click();
-
+        EtsyPageMobile.birNoktadanDigerineSurukle(506, 1837, 513, 1180);
         try {
             etsyPageMobile.selectOptionDDM2.click();
             etsyPageMobile.anotherOption.click();
         } catch (Exception e) {
 
         }
-        EtsyPageMobile.birNoktadanDigerineSurukle(506,1837,513,1180);
+
         etsyPageMobile.addToCartButon.click();
         EtsyPageMobile.bekle(2);
         try {
-            EtsyPageMobile.koordinataTikla(237,1091);
+            EtsyPageMobile.koordinataTikla(237, 1091);
             appiumDriver.getKeyboard().sendKeys(faker.pokemon().name());
             etsyPageMobile.addToCartButon.click();
         } catch (Exception e) {
@@ -76,49 +76,87 @@ public class AppStepDefinitions {
 
     @Then("Makes payment from the proceed to checkout section")
     public void makesPaymentFromTheProceedToCheckoutSection() {
-        EtsyPageMobile.birNoktadanDigerineSurukle(506,1837,513,1180);
+        EtsyPageMobile.birNoktadanDigerineSurukle(506, 1837, 513, 1180);
         etsyPageMobile.proceedToCheckoutButton.click();
-        String email=faker.internet().emailAddress();
-        EtsyPageMobile.koordinataTikla(129,524);
+        String email = faker.internet().emailAddress();
+        EtsyPageMobile.koordinataTikla(129, 524);
         appiumDriver.getKeyboard().sendKeys(email);
         etsyPageMobile.continueButton.click();
         EtsyPageMobile.bekle(2);
-        etsyPageMobile.firstNameBox.click();
-        appiumDriver.getKeyboard().sendKeys(faker.name().firstName());
+
+        etsyPageMobile.fullNameBox.click();
+        etsyPageMobile.firstNameBox.sendKeys(faker.name().firstName());
+        EtsyPageMobile.bekle(2);
+
         etsyPageMobile.passwordBox.click();
+        EtsyPageMobile.bekle(2);
+
         appiumDriver.getKeyboard().sendKeys("kl23...");
+        EtsyPageMobile.bekle(2);
 
         etsyPageMobile.registerButton.click();
         EtsyPageMobile.bekle(3);
+
         etsyPageMobile.notificationDenyOption.click();
+        EtsyPageMobile.bekle(3);
     }
 
     @And("Finish the order")
     public void finishTheOrder() {
-        EtsyPageMobile.koordinataTikla(388,822);
+        etsyPageMobile.fullNameBox.click();
+        etsyPageMobile.fullNameBox.sendKeys(faker.name().fullName());
+        EtsyPageMobile.bekle(2);
+
+        etsyPageMobile.streetAdressBox.click();
+        etsyPageMobile.streetAdressBox.sendKeys(faker.address().streetAddress());
+        EtsyPageMobile.bekle(2);
+
+        etsyPageMobile.aptBox.sendKeys("YaSabırAPT...");
+        EtsyPageMobile.bekle(2);
+        EtsyPageMobile.klavyeyiKapat();
+
+        etsyPageMobile.zipCodeBox.click();
+        etsyPageMobile.zipCodeBox.sendKeys("80202");
+        EtsyPageMobile.bekle(2);
+
+        etsyPageMobile.cityBox.click();
+        etsyPageMobile.cityBox.sendKeys("Denver");
+        EtsyPageMobile.bekle(2);
+        EtsyPageMobile.klavyeyiKapat();
+
+        etsyPageMobile.selectState.click();
+        EtsyPageMobile.bekle(3);
+        EtsyPageMobile.koordinataTikla(301, 1500);
+        EtsyPageMobile.bekle(3);
+        EtsyPageMobile.birNoktadanDigerineSurukle(506, 1837, 513, 1180);
+        try {
+            EtsyPageMobile.koordinataTikla(477, 2110);
+        } catch (Exception e) {
+            etsyPageMobile.continuePaymentButton.click();
+        }
+
+        EtsyPageMobile.bekle(5);
+        EtsyPageMobile.koordinataTikla(65, 642);
+        EtsyPageMobile.bekle(3);
+
+        EtsyPageMobile.koordinataTikla(606, 1030);
+        EtsyPageMobile.bekle(2);
         appiumDriver.getKeyboard().sendKeys(faker.name().fullName());
-        EtsyPageMobile.koordinataTikla(388,1022);
-        appiumDriver.getKeyboard().sendKeys(faker.address().streetAddress());
-        EtsyPageMobile.koordinataTikla(388,1422);
-        appiumDriver.getKeyboard().sendKeys(faker.address().zipCode());
-        EtsyPageMobile.koordinataTikla(388,1622);
-        appiumDriver.getKeyboard().sendKeys(faker.address().cityName());
-        EtsyPageMobile.koordinataTikla(388,1822);
-        EtsyPageMobile.koordinataTikla(901,450);
-        etsyPageMobile.continuePaymentButton.click();
+        EtsyPageMobile.bekle(3);
 
-        EtsyPageMobile.koordinataTikla(65,631);
-
-        EtsyPageMobile.koordinataTikla(606,1030);
-        appiumDriver.getKeyboard().sendKeys(faker.name().fullName());
-
-        EtsyPageMobile.koordinataTikla(423,1292);
+        EtsyPageMobile.koordinataTikla(423, 1292);
         appiumDriver.getKeyboard().sendKeys(faker.business().creditCardNumber());
+        EtsyPageMobile.bekle(3);
+        EtsyPageMobile.klavyeyiKapat();
 
-        EtsyPageMobile.koordinataTikla(118,1543);
-        EtsyPageMobile.koordinataTikla(118,1543);
-        EtsyPageMobile.koordinataTikla(843,1543);
+        EtsyPageMobile.koordinataTikla(118, 1543);
+        EtsyPageMobile.bekle(2);
+        EtsyPageMobile.koordinataTikla(118, 1543);
+        EtsyPageMobile.bekle(3);
+        EtsyPageMobile.koordinataTikla(843, 1543);
+        EtsyPageMobile.bekle(3);
         appiumDriver.getKeyboard().sendKeys("101");
+        EtsyPageMobile.birNoktadanDigerineSurukle(506, 1837, 513, 1180);
 
     }
 }

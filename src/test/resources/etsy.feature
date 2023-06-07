@@ -1,4 +1,4 @@
-@etsy
+@web
 Feature: The user adds a product to the cart from both the etsy web page and the mobile application and completes the shopping.
 
 
@@ -8,7 +8,7 @@ Feature: The user adds a product to the cart from both the etsy web page and the
     And Adds the first product in the search result to the cart
     And Selects size and color from the Edit item section
     And Makes payment from the Proceed to checkout section
-    And Finish the order
+
 
 
 

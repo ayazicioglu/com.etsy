@@ -9,3 +9,4 @@ Feature: App feature
     And Choose the first product from the results
     And Add to cart after selects size from the edit item section
     Then Makes payment from the proceed to checkout section
+    And Finish the order

@@ -15,10 +15,11 @@ import utilities.DriverApp;
 import java.time.Duration;
 
 public class EtsyPageMobile {
-    public EtsyPageMobile(){
+    public EtsyPageMobile() {
         PageFactory.initElements(new AppiumFieldDecorator(DriverApp.getAndroidDriver(), Duration.ofSeconds(15)), this);
     }
-    static AndroidDriver<AndroidElement> driver=DriverApp.getAndroidDriver();
+
+    static AndroidDriver<AndroidElement> driver = DriverApp.getAndroidDriver();
     static TouchAction action = new TouchAction<>(driver);
     @FindBy(xpath = "//*[@text='Continue as guest']")
     public WebElement asAGuestOption;
@@ -49,6 +50,23 @@ public class EtsyPageMobile {
 
     @FindBy(xpath = "(//*[@text='Add to cart'])")
     public WebElement addToCartButon;
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
+    public WebElement fullNameBox;
+
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
+    public WebElement streetAdressBox;
+
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[3]")
+    public WebElement aptBox;
+
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[4]")
+    public WebElement zipCodeBox;
+
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[5]")
+    public WebElement cityBox;
+
+    @FindBy(xpath = "(//*[@text='Select state'])[1]")
+    public WebElement selectState;
 
     @FindBy(xpath = "(//*[@text='View in your cart'])")
     public WebElement ViewInYourCart;
@@ -71,17 +89,22 @@ public class EtsyPageMobile {
     public static void koordinataTikla(int xKoordinat, int yKoordinat) {
         action.press(PointOption.point(xKoordinat, yKoordinat)).release().perform();
     }
+
     public static void birNoktadanDigerineSurukle(int x1, int y1, int x2, int y2) {
         action.press(PointOption.point(x1, y1)).
                 waitAction(WaitOptions.waitOptions(Duration.ofMillis(500))).
                 moveTo(PointOption.point(x2, y2)).
                 release().perform();
     }
+
     public static void bekle(int saniye) {
         try {
             Thread.sleep(saniye * 1000);
         } catch (InterruptedException e) {
         }
+    }
+    public static void klavyeyiKapat() {
+        action.press(PointOption.point(147, 2138)).release().perform();
     }
 
 }
