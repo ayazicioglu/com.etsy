@@ -39,6 +39,13 @@ public class EtsyStepDefinitions {
         EtsyPageWeb.bekle(3);
         select = new Select(etsyPageWeb.firstDDM);
         select.selectByIndex(1);
+
+        try {
+            select = new Select(etsyPageWeb.secondDDM);
+            select.selectByIndex(1);
+        } catch (Exception e) {
+
+        }
         EtsyPageWeb.bekle(3);
 
         try {//personalization varsa doldur

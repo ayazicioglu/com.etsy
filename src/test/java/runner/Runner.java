@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources",
         glue={"stepdefinitions"},
-        tags= "@web",
+        tags= "@app",
         dryRun =false
 
 )

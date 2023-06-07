@@ -19,10 +19,10 @@ public class EtsyPageWeb {
     @FindBy(xpath = "(//span[@class='wt-vertical-align-middle'])[1]")
     public WebElement firstAddToCartButton;
 
-    @FindBy(xpath = "//select[@class='wt-select__element']")
+    @FindBy(xpath = "(//select[@class='wt-select__element'])[1]")
     public WebElement firstDDM;
 
-    @FindBy(xpath = "//select[@id='variation-selector-1']")
+    @FindBy(xpath = "(//select[@class='wt-select__element'])[2]")
     public WebElement secondDDM;
 
     @FindBy(xpath = "(//button[@type='button'])[16]")
